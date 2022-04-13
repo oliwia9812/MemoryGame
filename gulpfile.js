@@ -4,6 +4,13 @@ const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const terser = require('gulp-terser');
 const browsersync = require('browser-sync').create();
+// const image = require('gulp-image');
+
+
+// Use dart-sass for @use
+sass.compiler = require('dart-sass');
+
+
 
 // Sass Task
 function scssTask(){
@@ -19,6 +26,13 @@ function jsTask(){
     .pipe(terser())
     .pipe(dest('dist', { sourcemaps: '.' }));
 }
+
+//Image task 
+// function imageTask(){
+//   return src('app/img/*.{jpg,png,svg,gif,ico,webp}', { sourcemaps: true })
+//     .pipe(image())
+//     .pipe(dest('dist', { sourcemaps: '.' }));
+// }
 
 // Browsersync Tasks
 function browsersyncServe(cb){
