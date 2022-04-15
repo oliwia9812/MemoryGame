@@ -5,17 +5,13 @@
     display: block;
     width: 90%;
     padding: 3rem 1rem;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: var(--box-shadow);
     border-radius: 5px;
     text-align: center;
 
     &__title {
         margin-bottom: 3rem;
         font-size: 1.2rem;
-    }
-
-    &__buttons-list {
-        
     }
 
     &__button {
@@ -25,23 +21,22 @@
         color: white;
 
         &:first-child {
-            background: #4e54c8;  /* fallback for old browsers */
+            background: var(--easy);  /* fallback for old browsers */
             background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */            
+            background: var(--easy-gradient) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */            
         }
 
         &:nth-child(2) {
-            background: #1D976C;  /* fallback for old browsers */
+            background: var(--normal);  /* fallback for old browsers */
             background: -webkit-linear-gradient(to left,#1D976C, #93F9B9);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to left,#1D976C, #93F9B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: var(--normal-gradient); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             
         }
 
         &:last-child {
-            background: #ee0979;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+            background: var(--hard);  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+            background: var(--hard-gradient) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         }
 
         &:not(:last-of-type) {

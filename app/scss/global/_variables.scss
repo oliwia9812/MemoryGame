@@ -1,4 +1,11 @@
 :root {
-
+    --text-dark: #333333; 
+    --box-shadow:rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    --easy: #4e54c8;
+    --easy-gradient: linear-gradient(to right, #8f94fb, #4e54c8);
+    --normal: #1D976C;
+    --normal-gradient: linear-gradient(to left,#1D976C, #93F9B9);
+    --hard: #ee0979;
+    --hard-gradient: linear-gradient(to right, #ff6a00, #ee0979);
 }
 

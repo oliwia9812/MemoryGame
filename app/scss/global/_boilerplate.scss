@@ -22,8 +22,8 @@ body {
   height: -webkit-fill-available;
   width: 100vw;
   font-family: 'Poppins', sans-serif;
-  letter-spacing: rem(1);
-  color: #333;
+  letter-spacing: .5px;
+  color: var(--text-dark);
 }
 
 
