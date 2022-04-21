@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 let level;
 let imagesToDisplay;
 const cards = [];
+let clickedCount = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
     setLevel();
@@ -76,6 +77,7 @@ const createCards = (cardsData) => {
         card.addEventListener('click', () => {
             card.classList.toggle('toggle');
             checkCards(card, cardsData.length);
+            clickedCount++;
         })
     })
 }
@@ -128,25 +130,33 @@ const setBackImage = () => {
 
 const checkCards = (clickedCard, numCards) => {
     clickedCard.classList.add('clicked');
+    
+    console.log(clickedCount);
     const clickedCards = document.querySelectorAll('.clicked');
     const toggledCards = document.querySelectorAll('.toggle');
     const firstCard = clickedCards[0];
     const secondCard = clickedCards[1];
- 
+    
     if (clickedCards.length === 2) {
-        if (firstCard.getAttribute('id')===secondCard.getAttribute('id')){
+         if (firstCard.getAttribute('id')===secondCard.getAttribute('id')){
             clickedCards.forEach(card => {
                 card.classList.remove('clicked'); 
                 card.style.pointerEvents = 'none';
             });
-
+            clickedCount = 0;
         } else {
             clickedCards.forEach(card => {
                card.classList.remove('clicked');
                setTimeout(()=>{card.classList.remove('toggle')}, 1000);
            });
+           clickedCount = 0;
         }
     } 
+
+    if (clickedCard === firstCard && clickedCount === 2 ){
+       clickedCard.classList.remove('clicked');
+       clickedCount = 0;
+    }
 
     if (toggledCards.length === numCards) {
       setTimeout(() => {
