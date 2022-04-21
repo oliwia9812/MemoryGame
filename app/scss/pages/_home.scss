@@ -1,7 +1,7 @@
 @use '../util'as *;
 
 .memory {
-    @include flex(column, center, center);
+    @include flex(column, center, flex-start);
     height: 100%;
     padding: 0 5vw;
     width: 100%;
@@ -13,13 +13,18 @@
         left: 5vw;
     }
 
+    &__restart-button {
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+
     &__board { 
         display: grid;
         grid-template-columns: repeat(4, 1fr); 
         grid-gap: .5rem;
         justify-items: center;
         align-items: center;
-        margin-top: 3rem;
+        margin-top: 1.5rem;
         width: 100%;
         height: 50vh;
 
