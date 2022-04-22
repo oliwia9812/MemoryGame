@@ -13,9 +13,28 @@
         left: 5vw;
     }
 
+    &__wrapper {
+        @include flex(row, space-between, center);
+        display: none;
+        width: 100%;
+
+        & > div {
+            display: flex;
+        }
+    }
+
     &__restart-button {
         height: 1.2rem;
         width: 1.2rem;
+        margin-right: 1.2rem;
+    }
+
+    &__moves {
+        font-weight: 600;
+    }
+
+    &__timer {
+        font-weight: 600;
     }
 
     &__board { 

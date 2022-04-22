@@ -4,10 +4,11 @@ const normalLevelCardsImg = cardsImg.slice(0,12);
 const hardLevelCardsImg = [...cardsImg];
 const gameBoard = document.querySelector('.memory__board');
 const modal = document.querySelector('.modal');
-let level;
-let imagesToDisplay;
 const cards = [];
 let clickedCount = 1;
+let level;
+let imagesToDisplay;
+
 
 document.addEventListener('DOMContentLoaded', () => {
     setLevel();
@@ -27,6 +28,9 @@ const setLevel = () => {
 
 
 const createBoard = (gameLevel) => {
+    const restartButton = document.querySelector('.memory__restart-button');
+    const memoryWrapper = document.querySelector('.memory__wrapper');
+
     switch (gameLevel.toLowerCase()) {
          case 'easy':
             createCards(easyLevelCardsImg)
@@ -43,8 +47,8 @@ const createBoard = (gameLevel) => {
     }
     
     gameBoard.classList.add(gameLevel.toLowerCase());
-    const restartButton = document.querySelector('.memory__restart-button');
-    restartButton.setAttribute('src', 'app/img/restart.svg');
+    memoryWrapper.style.display = 'flex';
+
     restartButton.addEventListener('click', () => {
         resetBoard();
     });
@@ -75,6 +79,7 @@ const createCards = (cardsData) => {
 
     cards.forEach((card) => {
         card.addEventListener('click', () => {
+            startTimer();
             card.classList.toggle('toggle');
             checkCards(card, cardsData.length);
             clickedCount++;
@@ -153,6 +158,7 @@ const checkCards = (clickedCard, numCards) => {
         }
     } 
 
+    // Prevent double click on one card
     if (clickedCard === firstCard && clickedCount === 2 ){
        clickedCard.classList.remove('clicked');
        clickedCount = 0;
@@ -168,6 +174,7 @@ const checkCards = (clickedCard, numCards) => {
 
 const restartGame = () => {
     window.location = window.location;
+    resetTimer();
 }
 
 
@@ -182,7 +189,41 @@ const resetBoard = () => {
     setTimeout(() => {
         setBackImage();
     }, 1000);
+
+    resetTimer();
 }
 
 
+// Timer 
+const timer = document.querySelector('.memory__timer');
+let [seconds, minutes] = [0,0];
+let idInt = null;
+let executed = false;
+
+const startTimer = () => {
+    if(!executed) {
+        idInt = setInterval(displayTimer,1000);
+    } 
+    executed = true; 
+}
+
+const resetTimer = () => {
+    executed = false;
+    clearInterval(idInt);
+    timer.innerHTML = '00:00';
+    [seconds, minutes] = [0,0];
+}
+
+const displayTimer = () => {
+    seconds++;
+        if(seconds == 60){
+            seconds = 0;
+            minutes++;
+    }
+  
+ let m = minutes < 10 ? "0" + minutes : minutes;
+ let s = seconds < 10 ? "0" + seconds : seconds;
+
+ timer.innerHTML = `${m} : ${s}`;
+}
 
