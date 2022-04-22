@@ -2,13 +2,19 @@ const cardsImg = ['car', 'car', 'cloud', 'cloud', 'code', 'code', 'crown', 'crow
 const easyLevelCardsImg = cardsImg.slice(0,8);
 const normalLevelCardsImg = cardsImg.slice(0,12);
 const hardLevelCardsImg = [...cardsImg];
+const logo = document.querySelector('.memory__title');
 const gameBoard = document.querySelector('.memory__board');
 const modal = document.querySelector('.modal');
 const cards = [];
+let movesCount = 0;
 let clickedCount = 1;
 let level;
 let imagesToDisplay;
 
+
+logo.addEventListener('click', () => {
+    restartGame();
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     setLevel();
@@ -25,7 +31,6 @@ const setLevel = () => {
         });
     });
 }
-
 
 const createBoard = (gameLevel) => {
     const restartButton = document.querySelector('.memory__restart-button');
@@ -135,8 +140,6 @@ const setBackImage = () => {
 
 const checkCards = (clickedCard, numCards) => {
     clickedCard.classList.add('clicked');
-    
-    console.log(clickedCount);
     const clickedCards = document.querySelectorAll('.clicked');
     const toggledCards = document.querySelectorAll('.toggle');
     const firstCard = clickedCards[0];
@@ -153,20 +156,27 @@ const checkCards = (clickedCard, numCards) => {
             clickedCards.forEach(card => {
                card.classList.remove('clicked');
                setTimeout(()=>{card.classList.remove('toggle')}, 1000);
+               
            });
            clickedCount = 0;
         }
+        movesCount++;
+        displayMoves();
+       
     } 
 
     // Prevent double click on one card
     if (clickedCard === firstCard && clickedCount === 2 ){
        clickedCard.classList.remove('clicked');
        clickedCount = 0;
+       movesCount++;
+        displayMoves();
     }
 
     if (toggledCards.length === numCards) {
       setTimeout(() => {
-          restartGame();
+          clearInterval(idInt);
+          displayEndModal();
       }, 1000);
     }
 }
@@ -191,10 +201,11 @@ const resetBoard = () => {
     }, 1000);
 
     resetTimer();
+    movesCount = 0;
+    displayMoves();
 }
 
 
-// Timer 
 const timer = document.querySelector('.memory__timer');
 let [seconds, minutes] = [0,0];
 let idInt = null;
@@ -226,4 +237,13 @@ const displayTimer = () => {
 
  timer.innerHTML = `${m} : ${s}`;
 }
+
+
+const displayMoves = () => {
+    const moves = document.querySelector('.memory__moves');
+    moves.innerHTML = `Moves: ${movesCount}`; 
+}
+
+displayMoves();
+
 
