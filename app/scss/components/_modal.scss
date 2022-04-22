@@ -3,8 +3,8 @@
 .modal {
     @include absolute-center;
     display: block;
-    width: 90%;
     padding: 3rem 1rem;
+    width: 90%;
     box-shadow: var(--box-shadow);
     border-radius: 5px;
     text-align: center;
@@ -15,10 +15,10 @@
     }
 
     &__button {
-        width: 100%;
         padding: 1rem 0;
-        font-weight: 600;
+        width: 100%;
         border-radius: 30px;
+        font-weight: 600;
         color: white;
 
         &:first-child {

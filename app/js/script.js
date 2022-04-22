@@ -6,6 +6,10 @@ const logo = document.querySelector('.memory__title');
 const gameBoard = document.querySelector('.memory__board');
 const modal = document.querySelector('.modal');
 const cards = [];
+const timer = document.querySelector('.memory__timer');
+let [seconds, minutes] = [0,0];
+let idInt = null;
+let executed = false;
 let movesCount = 0;
 let clickedCount = 1;
 let level;
@@ -205,12 +209,6 @@ const resetBoard = () => {
     displayMoves();
 }
 
-
-const timer = document.querySelector('.memory__timer');
-let [seconds, minutes] = [0,0];
-let idInt = null;
-let executed = false;
-
 const startTimer = () => {
     if(!executed) {
         idInt = setInterval(displayTimer,1000);
@@ -243,7 +241,6 @@ const displayMoves = () => {
     const moves = document.querySelector('.memory__moves');
     moves.innerHTML = `Moves: ${movesCount}`; 
 }
-
 displayMoves();
 
 
