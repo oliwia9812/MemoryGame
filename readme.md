@@ -1,6 +1,11 @@
-# Gulp & BrowserSync setup
+# MemoryGame
+Easy memory game. Project developed in vanilla javascript.
 
-Source code for the Browsersync + Gulp tutorial on Coder Coder.
+## Technologies Used
+* HTML5
+* SCSS
+* JavaScript
 
-Check out the full tutorials on [YouTube](https://youtu.be/q0E1hbcj-NI) and on [my blog](https://coder-coder.com/quick-guide-to-browsersync-gulp-4/)!
-
+## Screenshots 
+![screenshot_1](https://github.com/oliwia9812/MemoryGame/blob/main/images/screenshot_1.png)
+![screenshot_2](https://github.com/oliwia9812/MemoryGame/blob/main/images/screenshot_2.png)
